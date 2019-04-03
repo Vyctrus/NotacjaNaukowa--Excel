@@ -1,19 +1,16 @@
-//----------miniProgram---------------------//
+void toExcel() {
+	//----------miniProgram---------------------//
 	fstream wyniki;
 	fstream wynikiCor;
 	std::string  dataRow;
 	wynikiCor.open("wynikiCor.txt", ios::out);
 	wyniki.open("wyniki.txt", ios::in);
 	if (wynikiCor.good() && wyniki.good()) {
-		for (int i = 0; i < 1000; i++) {
+		for (int i = 0; i < 10; i++) {
 			getline(wyniki, dataRow);
 			int n = dataRow.length();
-			//char char_array[n + 1];
-			char *chArray=&dataRow[0];
-			//chArray = new char[n + 1];
-			//strcpy(chArray, dataRow.c_str());
-			
-			for (int k = 0; chArray[k] != '\n';k++) {
+			char *chArray = &dataRow[0];
+			for (int k = 0; chArray[k] != '\0'; k++) {
 				if (chArray[k] == 'e') {
 					chArray[k] = 'E';
 				}
@@ -22,9 +19,10 @@
 				}
 			}
 			string str(chArray);
-			wynikiCor << str<<std::endl;
+			wynikiCor << str << std::endl;
 		}
 		wyniki.close();
 		wynikiCor.close();
 	}
 	//------------------------------------------------
+}
